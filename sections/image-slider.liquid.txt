@@ -1,0 +1,58 @@
+{% schema %}
+{
+  "name": "Image Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "セクションタイトル"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "画像1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "画像2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "画像3"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Slider",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="image-slider">
+  <h2>{{ section.settings.title }}</h2>
+  <div class="slider">
+    {% if section.settings.image_1 != blank %}
+      <div><img src="{{ section.settings.image_1 | img_url: 'master' }}" alt="Image 1"></div>
+    {% endif %}
+    {% if section.settings.image_2 != blank %}
+      <div><img src="{{ section.settings.image_2 | img_url: 'master' }}" alt="Image 2"></div>
+    {% endif %}
+    {% if section.settings.image_3 != blank %}
+      <div><img src="{{ section.settings.image_3 | img_url: 'master' }}" alt="Image 3"></div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $('.slider').slick({
+      autoplay: true,
+      dots: true,
+      arrows: false
+    });
+  });
+</script>
