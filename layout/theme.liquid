@@ -31,6 +31,7 @@
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'swiper.min.js' | asset_url }}"></script>
     {%- if settings.animations_reveal_on_scroll -%}
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
@@ -252,6 +253,7 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'swiper.min.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.type_body_font.system? -%}
       {% comment %}theme-check-disable AssetPreload{% endcomment %}
@@ -277,19 +279,6 @@
         onload="this.media='all'"
       >
     {%- endif -%}
-
-    <!-- Slick CSS and JavaScript -->
-    <link rel="stylesheet" href="{{ 'slick.css' | asset_url }}">
-    <script src="{{ 'slick.min.js' | asset_url }}"></script>
-    <script>
-      $(document).ready(function(){
-        $('.slider').slick({
-          autoplay: true,
-          dots: true,
-          arrows: false
-        });
-      });
-    </script>
 
     <script>
       if (Shopify.designMode) {
